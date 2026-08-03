@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Foundation Activities Report — Lead Team</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;700;800&family=IBM+Plex+Mono:wght@500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#14151a;
+    --ink-soft:#6c6f78;
+    --paper:#fffdfb;
+    --card:#ffffff;
+    --line:#ece9e3;
+
+    --pink:#ff2870;
+    --pink-deep:#db1d64;
+    --pink-soft:#ffe6ee;
+    --yellow:#ffe148;
+    --yellow-deep:#e0b400;
+    --lime:#c5e34d;
+    --lime-deep:#6f8a1f;
+    --lime-soft:#f1f7de;
+    --cyan:#5ce1e6;
+    --cyan-deep:#0f9aa0;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Manrope',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  .mono{font-family:'IBM Plex Mono',ui-monospace,SFMono-Regular,Menlo,monospace;}
+  p, td, input{font-family:'Inter',sans-serif;}
+
+  header{
+    background:#14151a;
+    color:#fff;
+    padding:38px 28px 90px;
+    position:relative;
+    overflow:hidden;
+  }
+  .ribbon{
+    position:absolute; top:-40%; height:180%; width:130px;
+    transform:skewX(-18deg);
+    opacity:0.9;
+  }
+  .r1{background:var(--lime); right:-10px;}
+  .r2{background:var(--pink); right:70px;}
+  .r3{background:var(--cyan); right:150px;}
+  .r4{background:var(--yellow); right:230px;}
+  header::before{
+    content:"";
+    position:absolute; inset:0;
+    background:linear-gradient(90deg,#14151a 38%, rgba(20,21,26,0.55) 62%, rgba(20,21,26,0) 100%);
+    z-index:1;
+  }
+  .hdr-inner{max-width:1180px; margin:0 auto; position:relative; z-index:2;}
+  .logo-row{display:flex; align-items:center; gap:12px; margin-bottom:22px;}
+  .logo-img{height:42px; width:auto; display:block;}
+  .eyebrow{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12px; letter-spacing:.14em; text-transform:uppercase;
+    color:var(--cyan); margin-bottom:10px; font-weight:600;
+  }
+  h1{font-size:32px; margin:0 0 6px; font-weight:800; letter-spacing:-0.01em;}
+  .subtitle{color:#c7c9d1; font-size:15px; margin:0; max-width:560px;}
+  .meta-row{
+    display:flex; gap:10px; margin-top:20px; flex-wrap:wrap;
+  }
+  .pill{
+    background:rgba(255,255,255,0.08);
+    border:1px solid rgba(255,255,255,0.18);
+    padding:7px 14px; border-radius:100px;
+    font-size:13px; color:#e3e4ea;
+  }
+  .pill b{color:#fff;}
+
+  .summary-wrap{
+    max-width:1180px; margin:-52px auto 0; padding:0 28px;
+    position:relative; z-index:3;
+  }
+  .summary-grid{
+    display:grid; grid-template-columns:repeat(4,1fr); gap:14px;
+  }
+  .stat-card{
+    background:var(--card); border-radius:16px; padding:18px 20px;
+    box-shadow:0 10px 26px rgba(20,21,26,0.10); border:1px solid var(--line);
+    border-top:3px solid var(--accent, var(--pink));
+  }
+  .stat-label{font-size:12px; color:var(--ink-soft); text-transform:uppercase; letter-spacing:.06em; margin-bottom:6px; font-weight:600;}
+  .stat-value{font-size:27px; font-weight:800; font-family:'IBM Plex Mono',monospace;}
+  .stat-value.lime{color:var(--lime-deep);}
+  .stat-value.pink{color:var(--pink-deep);}
+
+  .controls{
+    max-width:1180px; margin:26px auto 0; padding:0 28px;
+    display:flex; gap:10px; align-items:center; flex-wrap:wrap;
+  }
+  .search{
+    flex:1; min-width:200px;
+    padding:10px 14px; border-radius:10px; border:1.5px solid var(--line);
+    font-size:14px; background:#fff;
+  }
+  .search:focus{outline:none; border-color:var(--cyan-deep);}
+  .filter-btn{
+    padding:9px 16px; border-radius:10px; border:1.5px solid var(--line);
+    background:#fff; font-size:13px; cursor:pointer; color:var(--ink-soft);
+    font-weight:700; transition:all .15s; font-family:'Manrope',sans-serif;
+  }
+  .filter-btn.active{background:var(--ink); color:#fff; border-color:var(--ink);}
+  .filter-btn:hover:not(.active){border-color:var(--pink); color:var(--pink-deep);}
+
+  .sort-hint{
+    max-width:1180px; margin:18px auto 0; padding:0 28px;
+    font-size:12px; color:var(--ink-soft); display:flex; align-items:center; gap:6px;
+  }
+
+  .table-wrap{
+    max-width:1180px; margin:10px auto 60px; padding:0 28px;
+  }
+  table{
+    width:100%; border-collapse:collapse; background:#fff;
+    border-radius:16px; overflow:hidden; box-shadow:0 4px 18px rgba(20,21,26,0.06);
+    border:1px solid var(--line);
+  }
+  thead th{
+    text-align:left; font-size:11px; text-transform:uppercase; letter-spacing:.06em;
+    color:var(--ink-soft); padding:14px 16px; border-bottom:1px solid var(--line);
+    background:#faf9f6; cursor:pointer; user-select:none; white-space:nowrap;
+    font-weight:700;
+  }
+  thead th .arrows{opacity:0.35; font-size:9px; margin-left:4px;}
+  thead th:hover{color:var(--pink-deep);}
+  thead th:hover .arrows{opacity:0.8;}
+  thead th.sorted{color:var(--pink-deep);}
+  thead th.sorted .arrows{opacity:1;}
+  tbody tr.main-row{border-bottom:1px solid var(--line);}
+  tbody tr:last-child{border-bottom:none;}
+  tbody tr.main-row:hover{background:#fdfaf6;}
+  td{padding:14px 16px; font-size:14px; vertical-align:middle;}
+  .agent-cell{display:flex; align-items:center; gap:10px; min-width:170px;}
+  .avatar{
+    width:34px; height:34px; border-radius:50%;
+    background:linear-gradient(135deg,var(--pink),var(--pink-deep));
+    color:#fff; display:flex; align-items:center; justify-content:center;
+    font-size:12.5px; font-weight:800; flex-shrink:0;
+  }
+  .agent-name{font-weight:700; font-size:14px;}
+  .score{font-family:'IBM Plex Mono',monospace; font-weight:800; color:var(--ink);}
+  .metric-cell{font-family:'IBM Plex Mono',monospace; font-size:13.5px; font-weight:500;}
+  .metric-target{color:var(--ink-soft); font-size:11px; margin-left:4px;}
+  .badge{
+    display:inline-block; padding:3px 9px; border-radius:100px;
+    font-size:11px; font-weight:800; text-transform:uppercase; letter-spacing:.02em;
+  }
+  .badge.met{background:var(--lime-soft); color:var(--lime-deep);}
+  .badge.below{background:var(--pink-soft); color:var(--pink-deep);}
+  .bar-track{width:64px; height:5px; background:var(--line); border-radius:100px; margin-top:4px; overflow:hidden;}
+  .bar-fill{height:100%; border-radius:100px;}
+  .bar-fill.met{background:var(--lime-deep);}
+  .bar-fill.below{background:var(--pink);}
+  .expand-btn{
+    background:none; border:1.5px solid var(--line); cursor:pointer; color:var(--ink);
+    font-size:12px; font-weight:700; padding:5px 10px; border-radius:8px;
+    font-family:'Manrope',sans-serif;
+  }
+  .expand-btn:hover{border-color:var(--cyan-deep); color:var(--cyan-deep);}
+  .detail-row td{background:#faf9f6; padding:0;}
+  .detail-inner{
+    padding:18px 20px 22px 60px; display:none; gap:24px;
+    grid-template-columns:1.2fr 1fr;
+  }
+  .detail-inner.open{display:grid;}
+  .detail-col h4{
+    font-size:11px; text-transform:uppercase; letter-spacing:.06em;
+    color:var(--ink-soft); margin:0 0 10px; font-weight:700;
+  }
+  .add-list{list-style:none; margin:0; padding:0; font-size:13px;}
+  .add-list li{display:flex; justify-content:space-between; padding:5px 0; border-bottom:1px dashed var(--line);}
+  .add-list li:last-child{border-bottom:none;}
+  .next-step{
+    font-size:13.5px; line-height:1.55; color:var(--ink); background:#eafcfd;
+    padding:14px 16px; border-radius:10px; border-left:3px solid var(--cyan-deep);
+  }
+
+  footer{
+    text-align:center; padding:22px; color:var(--ink-soft); font-size:12px;
+  }
+
+  @media(max-width:820px){
+    .summary-grid{grid-template-columns:repeat(2,1fr);}
+    thead{display:none;}
+    table, tbody, tr, td{display:block; width:100%;}
+    tbody tr.main-row{border-radius:12px; margin-bottom:12px; border:1px solid var(--line); overflow:hidden;}
+    td{padding:8px 16px; border:none;}
+    td::before{content:attr(data-label); display:block; font-size:10px; text-transform:uppercase; color:var(--ink-soft); margin-bottom:2px;}
+    .agent-cell td::before{display:none;}
+    .detail-inner{grid-template-columns:1fr; padding:16px;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="ribbon r1"></div>
+  <div class="ribbon r2"></div>
+  <div class="ribbon r3"></div>
+  <div class="ribbon r4"></div>
+  <div class="hdr-inner">
+    <div class="logo-row">
+      <img class="logo-img" src="https://cdn.emailacademy.com/user/625baed46159095ab1d10e38543fc937e94a293be6e897ef3aa0bea9972628f1/White%20Logo2026_04_06_14_19_16_0400000030_14_19_21_0700000031_22_50_48" alt="Premier Listings" onerror="this.style.display='none'">
+    </div>
+    <div class="eyebrow">Lead Team · Weekly Scorecard</div>
+    <h1>Foundation Activities Report</h1>
+    <p class="subtitle">Completion of Foundation Activities should be enough to get your Performance Outcomes.</p>
+    <div class="meta-row">
+      <span class="pill">📅 <b>Week of Jul 21–27, 2026</b></span>
+      <span class="pill">🎯 Foundation: <b>400+ calls</b> (250+ if under contract) · <b>15+</b> conversations · <b>2+</b> appointments</span>
+      <span class="pill">🏆 Outcomes: <b>2 showings/wk</b> · <b>1 lead under contract/mo</b></span>
+    </div>
+  </div>
+</header>
+
+<div class="summary-wrap">
+  <div class="summary-grid" id="summaryGrid"></div>
+</div>
+
+<div class="controls">
+  <input class="search" id="searchInput" placeholder="Search agent name…" />
+  <button class="filter-btn active" data-filter="all">All Agents</button>
+  <button class="filter-btn" data-filter="below">Below Target</button>
+  <button class="filter-btn" data-filter="met">All Met</button>
+</div>
+
+<div class="sort-hint">↕ Click any column heading below to sort the table</div>
+
+<div class="table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th data-key="rank">#</th>
+        <th data-key="name">Agent <span class="arrows">▲▼</span></th>
+        <th data-key="score" class="sorted">Activity Score <span class="arrows">▲▼</span></th>
+        <th data-key="calls">Calls <span class="arrows">▲▼</span></th>
+        <th data-key="conversations">Conversations <span class="arrows">▲▼</span></th>
+        <th data-key="appointments">Appts <span class="arrows">▲▼</span></th>
+        <th data-key="showings">Showings <span class="arrows">▲▼</span></th>
+        <th data-key="luc">Leads U/C <span class="arrows">▲▼</span></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody id="tbody"></tbody>
+  </table>
+</div>
+
+<footer>Data reflects the weekly Follow Up Boss Leaderboard export · Updated by Ops every Monday</footer>
+
+<script>
+const agents = [
+  { name:"Mark Prigitano", score:10569,
+    calls:275, callsTarget:250, callsMet:true,
+    conversations:24, convTarget:15, convMet:true,
+    appts:8, apptTarget:2, apptMet:true,
+    showings:1, luc:1,
+    talkTime:"4 hrs 57 min", texts:29, emails:21,
+    nextStep:"Excellent balanced week. Keep protecting your call blocks and continue turning activity into appointments and contract momentum." },
+  { name:"Tara Pressley", score:10389,
+    calls:408, callsTarget:400, callsMet:true,
+    conversations:3, convTarget:15, convMet:false,
+    appts:12, apptTarget:2, apptMet:true,
+    showings:0, luc:0,
+    talkTime:"16 min 1 sec", texts:2, emails:5,
+    nextStep:"Strong appointments, but conversation count is low. Improve connection quality by testing smarter lists and different call windows." },
+  { name:"Janaina Tomita", score:8151,
+    calls:466, callsTarget:400, callsMet:true,
+    conversations:19, convTarget:15, convMet:true,
+    appts:3, apptTarget:2, apptMet:true,
+    showings:0, luc:0,
+    talkTime:"3 hrs 3 min", texts:39, emails:13,
+    nextStep:"Great week across the board. Stay consistent and repeat the habits that produced this result." },
+  { name:"Christopher Pressley", score:7300,
+    calls:460, callsTarget:400, callsMet:true,
+    conversations:2, convTarget:15, convMet:false,
+    appts:5, apptTarget:2, apptMet:true,
+    showings:0, luc:0,
+    talkTime:"48 min 44 sec", texts:0, emails:0,
+    nextStep:"Appointments are happening, but conversations are low for this call volume. Review 3 calls in Call Buddy AI and strengthen your opener and appointment-setting." },
+  { name:"Diego D'Alessandro", score:7276,
+    calls:409, callsTarget:250, callsMet:true,
+    conversations:16, convTarget:15, convMet:true,
+    appts:3, apptTarget:2, apptMet:true,
+    showings:1, luc:1,
+    talkTime:"2 hrs 35 min", texts:38, emails:10,
+    nextStep:"Excellent balanced week. You met Foundation Activities and also produced a showing and a contract. Keep doing what's working." },
+  { name:"Nina Jones", score:5766,
+    calls:267, callsTarget:250, callsMet:true,
+    conversations:10, convTarget:15, convMet:false,
+    appts:4, apptTarget:2, apptMet:true,
+    showings:0, luc:1,
+    talkTime:"1 hr 42 min", texts:32, emails:32,
+    nextStep:"You have a deal in motion and strong appointment activity. Focus on raising conversations from 10 to 15+ so pipeline growth stays strong." },
+];
+
+let sortKey = "score", sortDir = -1, activeFilter = "all", searchTerm = "";
+
+function initials(name){
+  return name.split(" ").map(p=>p[0]).slice(0,2).join("").toUpperCase();
+}
+
+function metricCell(val, target, met){
+  const pct = Math.min(100, Math.round((val/target)*100));
+  return `<div class="metric-cell">${val}<span class="metric-target">/${target}+</span></div>
+    <div class="bar-track"><div class="bar-fill ${met?'met':'below'}" style="width:${pct}%"></div></div>`;
+}
+
+function renderSummary(){
+  const total = agents.length;
+  const belowCount = agents.filter(a=>!a.callsMet||!a.convMet||!a.apptMet).length;
+  const totalCalls = agents.reduce((s,a)=>s+a.calls,0);
+  const cards = [
+    ["Agents Reporting", total, "", "var(--cyan-deep)"],
+    ["Fully On Target", total-belowCount, "lime", "var(--lime-deep)"],
+    ["Below Target", belowCount, belowCount>0?"pink":"lime", "var(--pink)"],
+    ["Total Calls This Week", totalCalls.toLocaleString(), "", "var(--yellow-deep)"],
+  ];
+  document.getElementById("summaryGrid").innerHTML = cards.map(([label,val,cls,accent])=>`
+    <div class="stat-card" style="--accent:${accent}">
+      <div class="stat-label">${label}</div>
+      <div class="stat-value ${cls}">${val}</div>
+    </div>`).join("");
+}
+
+function getSorted(){
+  let list = agents.filter(a=>{
+    const belowAny = !a.callsMet||!a.convMet||!a.apptMet;
+    if(activeFilter==="below" && !belowAny) return false;
+    if(activeFilter==="met" && belowAny) return false;
+    if(searchTerm && !a.name.toLowerCase().includes(searchTerm.toLowerCase())) return false;
+    return true;
+  });
+  list.sort((a,b)=>{
+    let av = sortKey==="name" ? a.name : (sortKey==="calls"?a.calls:sortKey==="conversations"?a.conversations:sortKey==="appointments"?a.appts:sortKey==="showings"?a.showings:sortKey==="luc"?a.luc:a.score);
+    let bv = sortKey==="name" ? b.name : (sortKey==="calls"?b.calls:sortKey==="conversations"?b.conversations:sortKey==="appointments"?b.appts:sortKey==="showings"?b.showings:sortKey==="luc"?b.luc:b.score);
+    if(typeof av==="string") return av.localeCompare(bv)*sortDir;
+    return (av-bv)*sortDir;
+  });
+  return list;
+}
+
+function render(){
+  renderSummary();
+  const list = getSorted();
+  const tbody = document.getElementById("tbody");
+  tbody.innerHTML = "";
+  list.forEach((a, idx)=>{
+    const rank = agents.indexOf(a)+1;
+    const row = document.createElement("tr");
+    row.className = "main-row";
+    row.innerHTML = `
+      <td data-label="#">${rank}</td>
+      <td data-label="Agent"><div class="agent-cell"><div class="avatar">${initials(a.name)}</div><div class="agent-name">${a.name}</div></div></td>
+      <td data-label="Activity Score"><div class="score">${a.score.toLocaleString()}</div></td>
+      <td data-label="Calls">${metricCell(a.calls,a.callsTarget,a.callsMet)}</td>
+      <td data-label="Conversations">${metricCell(a.conversations,a.convTarget,a.convMet)}</td>
+      <td data-label="Appointments">${metricCell(a.appts,a.apptTarget,a.apptMet)}</td>
+      <td data-label="Showings" class="metric-cell">${a.showings}</td>
+      <td data-label="Leads U/C" class="metric-cell">${a.luc}</td>
+      <td><button class="expand-btn" data-idx="${idx}">Details ▾</button></td>
+    `;
+    tbody.appendChild(row);
+
+    const detail = document.createElement("tr");
+    detail.className = "detail-row";
+    detail.innerHTML = `
+      <td colspan="9">
+        <div class="detail-inner" id="detail-${idx}">
+          <div class="detail-col">
+            <h4>Additional Activity</h4>
+            <ul class="add-list">
+              <li><span>Talk Time</span><span class="mono">${a.talkTime}</span></li>
+              <li><span>Text Messages</span><span class="mono">${a.texts}</span></li>
+              <li><span>Emails</span><span class="mono">${a.emails}</span></li>
+            </ul>
+          </div>
+          <div class="detail-col">
+            <h4>Next Step This Week</h4>
+            <div class="next-step">${a.nextStep}</div>
+          </div>
+        </div>
+      </td>
+    `;
+    tbody.appendChild(detail);
+  });
+
+  document.querySelectorAll(".expand-btn").forEach(btn=>{
+    btn.addEventListener("click", ()=>{
+      const d = document.getElementById("detail-"+btn.dataset.idx);
+      d.classList.toggle("open");
+      btn.textContent = d.classList.contains("open") ? "Details ▴" : "Details ▾";
+    });
+  });
+}
+
+document.querySelectorAll("thead th[data-key]").forEach(th=>{
+  th.addEventListener("click", ()=>{
+    const key = th.dataset.key;
+    if(sortKey===key) sortDir *= -1; else { sortKey=key; sortDir=-1; }
+    document.querySelectorAll("thead th").forEach(t=>t.classList.remove("sorted"));
+    th.classList.add("sorted");
+    render();
+  });
+});
+document.querySelectorAll(".filter-btn").forEach(btn=>{
+  btn.addEventListener("click", ()=>{
+    document.querySelectorAll(".filter-btn").forEach(b=>b.classList.remove("active"));
+    btn.classList.add("active");
+    activeFilter = btn.dataset.filter;
+    render();
+  });
+});
+document.getElementById("searchInput").addEventListener("input", (e)=>{
+  searchTerm = e.target.value;
+  render();
+});
+
+render();
+</script>
+</body>
+</html>
