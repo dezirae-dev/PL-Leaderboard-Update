@@ -41,7 +41,7 @@
   header{
     background:#14151a;
     color:#fff;
-    padding:38px 28px 90px;
+    padding:38px 28px 40px;
     position:relative;
     overflow:hidden;
   }
@@ -82,7 +82,7 @@
   .pill b{color:#fff;}
 
   .summary-wrap{
-    max-width:1180px; margin:-52px auto 0; padding:0 28px;
+    max-width:1180px; margin:24px auto 0; padding:0 28px;
     position:relative; z-index:3;
   }
   .summary-grid{
@@ -93,7 +93,7 @@
     box-shadow:0 10px 26px rgba(20,21,26,0.10); border:1px solid var(--line);
     border-top:3px solid var(--accent, var(--pink));
   }
-  .stat-label{font-size:12px; color:var(--ink-soft); text-transform:uppercase; letter-spacing:.06em; margin-bottom:6px; font-weight:600;}
+  .stat-label{font-size:12px; color:#52555e; text-transform:uppercase; letter-spacing:.06em; margin-bottom:6px; font-weight:700;}
   .stat-value{font-size:27px; font-weight:800; font-family:'IBM Plex Mono',monospace;}
   .stat-value.lime{color:var(--lime-deep);}
   .stat-value.pink{color:var(--pink-deep);}
@@ -405,6 +405,10 @@
         <div class="race-ctrl">
           <label>WEEKLY TARGET</label>
           <input type="number" id="raceTargetInput" value="450" min="1">
+        </div>
+        <div class="race-ctrl">
+          <label>🏁 MONTHLY FINISH LINE</label>
+          <span id="raceMonthlyGoalDisplay" style="font-family:'Manrope',sans-serif; font-weight:800; font-size:15px;">—</span>
         </div>
       </div>
     </div>
@@ -805,6 +809,7 @@ function renderRace(){
   raceWeeklyTarget = Math.max(1, Number(raceTargetInput.value) || 1);
   raceViewingWeek = Number(raceWeekSelect.value);
   const g = raceGoal();
+  document.getElementById("raceMonthlyGoalDisplay").textContent = `${g.toLocaleString()} calls`;
 
   document.getElementById("raceWeekStrip").innerHTML = raceMonthWeeks.map(w =>
     `<span>${w.label} · target ${raceWeeklyTarget}</span>`).join("");
