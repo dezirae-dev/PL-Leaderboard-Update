@@ -193,6 +193,124 @@
     text-align:center; padding:22px; color:var(--ink-soft); font-size:12px;
   }
 
+  /* TABS */
+  .tab-bar{
+    background:#fff; border-bottom:1px solid var(--line);
+    position:relative; z-index:4;
+  }
+  .tab-bar-inner{
+    max-width:1180px; margin:0 auto; padding:0 28px;
+    display:flex; gap:6px;
+  }
+  .tab-btn{
+    background:none; border:none; cursor:pointer;
+    font-family:'Manrope',sans-serif; font-weight:700; font-size:14px;
+    color:var(--ink-soft); padding:16px 6px; margin-right:22px;
+    border-bottom:3px solid transparent; transition:all .15s;
+  }
+  .tab-btn:hover{color:var(--ink);}
+  .tab-btn.active{color:var(--pink-deep); border-bottom-color:var(--pink);}
+  .tab-panel{display:none;}
+  .tab-panel.active{display:block;}
+
+  /* RACE TO CONTRACT */
+  .race-wrap{max-width:1180px; margin:0 auto; padding:32px 28px 10px;}
+  .race-header h2{
+    font-size:26px; font-weight:800; margin:0 0 8px; letter-spacing:-0.01em;
+  }
+  .race-subtitle{color:var(--ink-soft); font-size:14px; max-width:640px; margin:0 0 18px; line-height:1.5;}
+  .race-controls{display:flex; gap:12px; flex-wrap:wrap; margin-bottom:20px;}
+  .race-ctrl{
+    background:#14151a; color:#fff; border-radius:10px; padding:8px 14px;
+  }
+  .race-ctrl label{
+    font-size:10px; font-family:'IBM Plex Mono',monospace; letter-spacing:.08em;
+    opacity:0.65; display:block; margin-bottom:2px;
+  }
+  .race-ctrl select, .race-ctrl input{
+    background:transparent; border:none; color:#fff;
+    font-family:'Manrope',sans-serif; font-weight:700; font-size:15px;
+  }
+  .race-ctrl input{width:60px;}
+  .race-ctrl select option{color:var(--ink);}
+
+  .race-week-strip{
+    display:flex; justify-content:space-between; gap:8px;
+    font-size:11px; color:var(--ink-soft); margin-bottom:6px; padding:0 4px;
+    flex-wrap:wrap;
+  }
+
+  .race-track{
+    background:linear-gradient(180deg,#fbfaf7,#f3f1eb);
+    border:1px solid var(--line); border-radius:16px;
+    padding:14px 0; position:relative; overflow:hidden;
+  }
+  .race-checkpoints{position:absolute; inset:0; pointer-events:none;}
+  .race-checkline{position:absolute; top:0; bottom:0; width:1px; background:rgba(20,21,26,0.08);}
+  .race-checkline .rc-label{
+    position:absolute; top:2px; left:4px; font-size:9px; font-weight:700;
+    color:var(--ink-soft); white-space:nowrap; font-family:'IBM Plex Mono',monospace;
+  }
+  .race-checkline.current{background:var(--pink); width:2px; opacity:0.5;}
+
+  .race-lane{
+    position:relative; height:60px;
+    border-top:1px dashed var(--line);
+    display:flex; align-items:center;
+  }
+  .race-lane:first-child{border-top:none;}
+  .race-lane-label{
+    position:absolute; left:10px; top:4px; z-index:5;
+    font-size:11px; font-weight:700; color:var(--ink);
+    background:rgba(255,255,255,0.82); padding:1px 6px; border-radius:5px;
+  }
+  .race-finish{
+    position:absolute; right:44px; top:0; bottom:0; width:4px;
+    background:repeating-linear-gradient(180deg, var(--ink) 0 7px, transparent 7px 14px);
+    z-index:3; opacity:0.6;
+  }
+  .race-flag{
+    position:absolute; right:12px; top:6px; bottom:0;
+    font-size:20px; z-index:2;
+  }
+  .race-runner{
+    position:absolute; left:6px; font-size:26px; z-index:4;
+    transition:left 900ms cubic-bezier(.4,1.4,.4,1);
+    filter:drop-shadow(0 2px 3px rgba(0,0,0,0.15));
+  }
+  .race-pace-badge{
+    position:absolute; top:-15px; left:50%; transform:translateX(-50%);
+    font-size:10px; font-weight:800; white-space:nowrap;
+    padding:1px 7px; border-radius:100px;
+  }
+  .race-pace-ahead{background:var(--lime-soft); color:var(--lime-deep);}
+  .race-pace-behind{background:var(--pink-soft); color:var(--pink-deep);}
+  .race-pace-ontrack{background:#e6fafb; color:var(--cyan-deep);}
+  .race-pace-graduated{background:#fff6d8; color:var(--yellow-deep);}
+  .race-winner-glow{filter:drop-shadow(0 0 7px rgba(255,40,112,0.75)) !important;}
+  .race-behind-glow{filter:drop-shadow(0 0 5px rgba(255,40,112,0.4)) !important;}
+
+  .race-winner-banner{
+    display:none; margin-top:16px; background:var(--ink); color:#fff;
+    padding:14px 18px; border-radius:12px; font-weight:700; font-size:15px; text-align:center;
+  }
+
+  .race-board{max-width:520px; margin:28px 0 40px;}
+  .race-board h3{font-size:16px; font-weight:800; margin:0 0 4px;}
+  .race-board-note{font-size:12px; color:var(--ink-soft); margin:0 0 14px;}
+  .race-leaderboard{list-style:none; margin:0; padding:0; background:#fff; border:1px solid var(--line); border-radius:14px; overflow:hidden;}
+  .race-leaderboard li{
+    display:flex; justify-content:space-between; align-items:center;
+    padding:11px 16px; border-bottom:1px solid var(--line); font-size:14px;
+  }
+  .race-leaderboard li:last-child{border-bottom:none;}
+  .race-lb-name{display:flex; align-items:center; gap:8px; font-weight:700;}
+  .race-lb-icon{font-size:18px;}
+  .race-lb-score{font-family:'IBM Plex Mono',monospace; font-weight:800; text-align:right;}
+  .race-lb-pct{font-size:11px; color:var(--ink-soft); font-weight:500; display:block; font-family:'Inter',sans-serif;}
+  .race-rank-1{color:var(--pink-deep);}
+  .race-tag{font-size:10px; font-weight:800; padding:2px 7px; border-radius:100px; margin-left:6px; text-transform:uppercase;}
+
   @media(max-width:820px){
     .summary-grid{grid-template-columns:repeat(2,1fr);}
     .summary-grid .stat-card:last-child{grid-column:1 / -1;}
@@ -221,13 +339,23 @@
     <h1>Foundation Activities Report</h1>
     <p class="subtitle">Completion of Foundation Activities should be enough to get your Performance Outcomes.</p>
     <div class="meta-row">
-      <span class="pill">📅 <b>Week of Sep 7 – Sep 13, 2026</b></span>
+      <span class="pill">📅 <b>Week of Sep 14 – Sep 20, 2026</b></span>
       <span class="pill">🎯 Foundation: <b>400+ calls</b> (250+ if under contract) · <b>15+</b> conversations · <b>2+</b> appointments</span>
       <span class="pill">🏆 Outcomes: <b>2 showings/wk</b> · <b>1 lead under contract/mo</b></span>
       <span class="pill">🐟 <b>= hit call minimum</b> — Fresh Fish Pond access this week</span>
     </div>
   </div>
 </header>
+
+<div class="tab-bar">
+  <div class="tab-bar-inner">
+    <button class="tab-btn active" data-tab="scorecard">📊 Weekly Scorecard</button>
+    <button class="tab-btn" data-tab="race">🏁 Race to Contract</button>
+  </div>
+</div>
+
+<div id="tab-scorecard" class="tab-panel active">
+
 
 <div class="summary-wrap">
   <div class="summary-grid" id="summaryGrid"></div>
@@ -262,142 +390,149 @@
 </div>
 
 <footer>Data reflects the weekly Follow Up Boss Leaderboard export · Updated by Ops every Monday</footer>
+</div>
+
+<div id="tab-race" class="tab-panel">
+  <div class="race-wrap">
+    <div class="race-header">
+      <h2 id="raceTitle">Race to Contract</h2>
+      <p class="race-subtitle">For agents not yet under contract — a fresh sprint every month toward the monthly call goal. First to the finish line wins bragging rights (and everyone who crosses it graduates to Fresh Fish standards).</p>
+      <div class="race-controls">
+        <div class="race-ctrl">
+          <label>VIEWING WEEK</label>
+          <select id="raceWeekSelect"></select>
+        </div>
+        <div class="race-ctrl">
+          <label>WEEKLY TARGET</label>
+          <input type="number" id="raceTargetInput" value="450" min="1">
+        </div>
+      </div>
+    </div>
+
+    <div class="race-week-strip" id="raceWeekStrip"></div>
+
+    <div class="race-track" id="raceTrack">
+      <div class="race-checkpoints" id="raceCheckpoints"></div>
+    </div>
+
+    <div class="race-winner-banner" id="raceWinnerBanner"></div>
+
+    <div class="race-board">
+      <h3>Standings</h3>
+      <p class="race-board-note">Updated weekly with fresh call numbers — resets to a new race on the 1st of each month.</p>
+      <ul class="race-leaderboard" id="raceLeaderboardList"></ul>
+    </div>
+  </div>
+  <footer>Race resets automatically each calendar month · For agents not currently under contract</footer>
+</div>
 
 <script>
 const agents = [
-  { name:"Mark Prigitano", score:6738,
-    calls:254, callsTarget:250, callsMet:true,
-    conversations:10, convTarget:15, convMet:false,
-    appts:6, apptTarget:2, apptMet:true,
-    showings:2, luc:2,
-    talkTime:"2 hrs 36 min", texts:14, emails:170, zillow:0,
-    nextStep:"Great week back from vacation — calls (254) and appointments (6) both cleared target, plus 2 showings. Conversations (10) are the one gap; try a different Smart List or calling window, and review 3 calls in Call Buddy AI." },
-  { name:"Diego D'Alessandro", score:5622,
-    calls:258, callsTarget:250, callsMet:true,
-    conversations:22, convTarget:15, convMet:true,
-    appts:1, apptTarget:2, apptMet:false,
-    showings:0, luc:1,
-    talkTime:"3 hrs 40 min", texts:95, emails:152, zillow:0,
-    nextStep:"Calls (258) and conversations (22) both cleared target — great connecting. Appointments (1) are the gap; use Call Buddy AI on 3 recent conversations and practice appointment-setting language through AI Role Play or with a manager." },
-  { name:"Donald Pollas", score:5193,
-    calls:460, callsTarget:400, callsMet:true,
-    conversations:5, convTarget:15, convMet:false,
-    appts:0, apptTarget:2, apptMet:false,
-    showings:0, luc:0,
-    talkTime:"1 hr 44 min", texts:18, emails:57, zillow:0,
-    nextStep:"Calls (460) cleared target, but conversations (5) and appointments (0) are still low. Switch Smart Lists, add filters, and review 3 calls in Call Buddy AI this week." },
-  { name:"Nina Jones", score:5067,
-    calls:135, callsTarget:400, callsMet:false,
-    conversations:6, convTarget:15, convMet:false,
-    appts:6, apptTarget:2, apptMet:true,
-    showings:0, luc:0,
-    talkTime:"1 hr 8 min", texts:36, emails:45, zillow:0,
-    nextStep:"6 appointments this week is excellent, but it's sitting on just 135 calls — well below target. Keep the appointment-setting habits working, but rebuild call volume so this pipeline stays fed." },
-  { name:"Gwendolyn Phinizy", score:4992,
-    calls:402, callsTarget:400, callsMet:true,
-    conversations:9, convTarget:15, convMet:false,
-    appts:0, apptTarget:2, apptMet:false,
-    showings:0, luc:0,
-    talkTime:"1 hr 22 min", texts:10, emails:52, zillow:0,
-    nextStep:"Calls (402) cleared target, but conversations (9) and appointments (0) are still low relative to that volume. Switch Smart Lists, add filters, and review 3 calls in Call Buddy AI this week." },
-  { name:"Ateka Hatcher", score:4845,
-    calls:408, callsTarget:400, callsMet:true,
-    conversations:2, convTarget:15, convMet:false,
-    appts:1, apptTarget:2, apptMet:false,
-    showings:1, luc:0,
-    talkTime:"36 min 29 sec", texts:3, emails:59, zillow:0,
-    nextStep:"Nice work landing a showing this week, and calls (408) cleared target. Conversations (2) and appointments (1) are both low though — switch Smart Lists, add filters, and review 3 calls in Call Buddy AI." },
-  { name:"Janaina Tomita", score:4668,
-    calls:418, callsTarget:400, callsMet:true,
-    conversations:4, convTarget:15, convMet:false,
-    appts:0, apptTarget:2, apptMet:false,
-    showings:0, luc:0,
-    talkTime:"1 hr", texts:6, emails:76, zillow:0,
-    nextStep:"Calls (418) cleared target, but conversations (4) and appointments (0) are still low. Switch Smart Lists, add filters, and review 3 calls in Call Buddy AI this week." },
-  { name:"Claudia Haggerty", score:4525,
-    calls:285, callsTarget:250, callsMet:true,
-    conversations:6, convTarget:15, convMet:false,
-    appts:2, apptTarget:2, apptMet:true,
-    showings:0, luc:1,
-    talkTime:"1 hr 27 min", texts:3, emails:69, zillow:0,
-    nextStep:"Calls (285) and appointments (2) both cleared target. Conversations (6) are the one gap; try a different Smart List or calling window, and review 3 calls in Call Buddy AI." },
-  { name:"Sherry Chazen", score:3441,
-    calls:271, callsTarget:250, callsMet:true,
-    conversations:6, convTarget:15, convMet:false,
-    appts:0, apptTarget:2, apptMet:false,
-    showings:0, luc:1,
-    talkTime:"1 hr 2 min", texts:14, emails:103, zillow:0,
-    nextStep:"Calls (271) cleared target, but conversations (6) and appointments (0) are still low relative to that volume. Switch Smart Lists, add filters, and review 3 calls in Call Buddy AI this week." },
-  { name:"Kelly Arroyo", score:3296,
-    calls:263, callsTarget:400, callsMet:false,
+  { name:"Donald Pollas", score:7573,
+    calls:621, callsTarget:400, callsMet:true,
     conversations:3, convTarget:15, convMet:false,
-    appts:0, apptTarget:2, apptMet:false,
-    showings:0, luc:0,
-    talkTime:"1 hr", texts:70, emails:226, zillow:0,
-    nextStep:"Calls (263), conversations (3), and appointments (0) were all below target this week. The priority is activity volume — protect daily call blocks and set a minimum daily call goal." },
-  { name:"Tara Pressley", score:1792,
-    calls:53, callsTarget:250, callsMet:false,
-    conversations:2, convTarget:15, convMet:false,
-    appts:2, apptTarget:2, apptMet:true,
-    showings:0, luc:1,
-    talkTime:"17 min 53 sec", texts:14, emails:34, zillow:0,
-    nextStep:"2 appointments this week, but calls (53) are well below target and conversations (2) are low too. Keep the appointment-setting habits working, but rebuild call volume this week." },
-  { name:"Jennifer Vacchetto", score:1367,
-    calls:31, callsTarget:400, callsMet:false,
-    conversations:0, convTarget:15, convMet:false,
     appts:2, apptTarget:2, apptMet:true,
     showings:0, luc:0,
-    talkTime:"0 min", texts:0, emails:57, zillow:0,
-    nextStep:"2 appointments this week is a nice result, but calls (31) and conversations (0) are both far below target — that pipeline won't sustain without more activity behind it." },
-  { name:"Epie Rittenberg", score:293,
-    calls:25, callsTarget:400, callsMet:false,
-    conversations:0, convTarget:15, convMet:false,
+    talkTime:"1 hr 56 min", texts:27, emails:9, zillow:0,
+    nextStep:"Calls (621) and appointments (2) both cleared target — huge call volume this week. Conversations (3) are the one gap; try a different Smart List or calling window, and review 3 calls in Call Buddy AI." },
+  { name:"Diego D'Alessandro", score:6899,
+    calls:260, callsTarget:250, callsMet:true,
+    conversations:17, convTarget:15, convMet:true,
+    appts:5, apptTarget:2, apptMet:true,
+    showings:0, luc:1,
+    talkTime:"2 hrs 12 min", texts:40, emails:19, zillow:0,
+    nextStep:"Perfect week — every Foundation Activity crushed (260 calls, 17 conversations, 5 appointments). Keep protecting these habits; this is exactly the standard to repeat." },
+  { name:"Ateka Hatcher", score:6245,
+    calls:412, callsTarget:400, callsMet:true,
+    conversations:11, convTarget:15, convMet:false,
+    appts:2, apptTarget:2, apptMet:true,
+    showings:0, luc:0,
+    talkTime:"1 hr 20 min", texts:12, emails:1, zillow:0,
+    nextStep:"Calls (412) and appointments (2) both cleared target. Conversations (11) are close but still under 15 — try a different Smart List or calling window, and review 3 calls in Call Buddy AI." },
+  { name:"Claudia Haggerty", score:5015,
+    calls:261, callsTarget:250, callsMet:true,
+    conversations:9, convTarget:15, convMet:false,
+    appts:3, apptTarget:2, apptMet:true,
+    showings:0, luc:1,
+    talkTime:"1 hr 5 min", texts:1, emails:3, zillow:0,
+    nextStep:"Calls (261) and appointments (3) both cleared target. Conversations (9) are the one gap; try a different Smart List or calling window, and review 3 calls in Call Buddy AI." },
+  { name:"Mark Prigitano", score:4354,
+    calls:250, callsTarget:250, callsMet:true,
+    conversations:8, convTarget:15, convMet:false,
+    appts:2, apptTarget:2, apptMet:true,
+    showings:0, luc:2,
+    talkTime:"1 hr 6 min", texts:18, emails:18, zillow:0,
+    nextStep:"Calls (250) and appointments (2) both cleared target. Conversations (8) are the one gap; try a different Smart List or calling window, and review 3 calls in Call Buddy AI." },
+  { name:"Sherry Chazen", score:3708,
+    calls:252, callsTarget:250, callsMet:true,
+    conversations:6, convTarget:15, convMet:false,
+    appts:1, apptTarget:2, apptMet:false,
+    showings:1, luc:1,
+    talkTime:"1 hr 6 min", texts:35, emails:18, zillow:0,
+    nextStep:"Nice work landing a showing this week, and calls (252) cleared target. Conversations (6) and appointments (1) are both low though — switch Smart Lists, add filters, and review 3 calls in Call Buddy AI." },
+  { name:"Kelly Arroyo", score:2677,
+    calls:166, callsTarget:400, callsMet:false,
+    conversations:4, convTarget:15, convMet:false,
+    appts:1, apptTarget:2, apptMet:false,
+    showings:0, luc:0,
+    talkTime:"37 min 49 sec", texts:31, emails:55, zillow:0,
+    nextStep:"Calls (166), conversations (4), and appointments (1) were all below target this week. The priority is activity volume — protect daily call blocks and set a minimum daily call goal." },
+  { name:"Tara Pressley", score:2259,
+    calls:104, callsTarget:250, callsMet:false,
+    conversations:6, convTarget:15, convMet:false,
+    appts:1, apptTarget:2, apptMet:false,
+    showings:1, luc:1,
+    talkTime:"46 min 2 sec", texts:8, emails:103, zillow:0,
+    nextStep:"Nice work landing a showing this week. Calls (104), conversations (6), and appointments (1) were all below target though — protect daily call blocks this week to build a stronger base under that result." },
+  { name:"Janaina Tomita", score:1958,
+    calls:185, callsTarget:400, callsMet:false,
+    conversations:1, convTarget:15, convMet:false,
     appts:0, apptTarget:2, apptMet:false,
     showings:0, luc:0,
-    talkTime:"0 min", texts:0, emails:43, zillow:0,
-    nextStep:"Calls (25), conversations (0), and appointments (0) were all well below target. The priority is rebuilding a consistent daily call routine." },
-  { name:"Lori Blum", score:258,
-    calls:21, callsTarget:400, callsMet:false,
-    conversations:0, convTarget:15, convMet:false,
-    appts:0, apptTarget:2, apptMet:false,
+    talkTime:"26 min 5 sec", texts:0, emails:8, zillow:0,
+    nextStep:"Calls (185), conversations (1), and appointments (0) were all below target this week. The priority is activity volume — protect daily call blocks and set a minimum daily call goal." },
+  { name:"Nina Jones", score:1837,
+    calls:42, callsTarget:400, callsMet:false,
+    conversations:4, convTarget:15, convMet:false,
+    appts:2, apptTarget:2, apptMet:true,
     showings:0, luc:0,
-    talkTime:"0 min", texts:0, emails:48, zillow:0,
-    nextStep:"Calls (21), conversations (0), and appointments (0) were all well below target this week. The priority is activity volume — protect daily call blocks and set a minimum daily call goal." },
-  { name:"Sean Guerrier", score:48,
-    calls:0, callsTarget:250, callsMet:false,
-    conversations:0, convTarget:15, convMet:false,
-    appts:0, apptTarget:2, apptMet:false,
-    showings:0, luc:5,
-    talkTime:"0 min", texts:0, emails:48, zillow:0,
-    nextStep:"No calls, conversations, or appointments logged again this week. Let's connect and put a concrete daily plan in place." },
-  { name:"Maryka Verteramo", score:22,
-    calls:0, callsTarget:250, callsMet:false,
-    conversations:0, convTarget:15, convMet:false,
+    talkTime:"44 min 35 sec", texts:7, emails:3, zillow:0,
+    nextStep:"2 appointments this week, but it's sitting on just 42 calls — well below target. Keep the appointment-setting habits working, but rebuild call volume so this pipeline stays fed." },
+  { name:"Jennifer Vacchetto", score:1333,
+    calls:123, callsTarget:250, callsMet:false,
+    conversations:1, convTarget:15, convMet:false,
     appts:0, apptTarget:2, apptMet:false,
     showings:0, luc:1,
-    talkTime:"0 min", texts:6, emails:10, zillow:0,
-    nextStep:"No calls, conversations, or appointments logged this week. The priority is building a consistent daily call routine." },
-  { name:"Marc Urbainczyk", score:20,
+    talkTime:"9 min 32 sec", texts:0, emails:3, zillow:0,
+    nextStep:"Calls (123), conversations (1), and appointments (0) were all below target this week. The priority is activity volume — protect daily call blocks and set a minimum daily call goal." },
+  { name:"Gwendolyn Phinizy", score:170,
+    calls:16, callsTarget:400, callsMet:false,
+    conversations:0, convTarget:15, convMet:false,
+    appts:0, apptTarget:2, apptMet:false,
+    showings:0, luc:0,
+    talkTime:"0 min", texts:3, emails:4, zillow:0,
+    nextStep:"Calls (16), conversations (0), and appointments (0) were all well below target. The priority is rebuilding a consistent daily call routine." },
+  { name:"Epie Rittenberg", score:93,
+    calls:9, callsTarget:400, callsMet:false,
+    conversations:0, convTarget:15, convMet:false,
+    appts:0, apptTarget:2, apptMet:false,
+    showings:0, luc:0,
+    talkTime:"0 min", texts:0, emails:3, zillow:0,
+    nextStep:"Calls (9), conversations (0), and appointments (0) were all well below target. The priority is rebuilding a consistent daily call routine." },
+  { name:"Lori Blum", score:7,
     calls:0, callsTarget:400, callsMet:false,
     conversations:0, convTarget:15, convMet:false,
     appts:0, apptTarget:2, apptMet:false,
     showings:0, luc:0,
-    talkTime:"0 min", texts:0, emails:20, zillow:0,
-    nextStep:"No activity logged again this week. Let's connect and put a plan in place." },
-  { name:"William McClellan III", score:12,
+    talkTime:"0 min", texts:0, emails:7, zillow:0,
+    nextStep:"No calls, conversations, or appointments logged this week. The priority is building a consistent daily call routine." },
+  { name:"Sean Guerrier", score:2,
     calls:0, callsTarget:250, callsMet:false,
     conversations:0, convTarget:15, convMet:false,
     appts:0, apptTarget:2, apptMet:false,
-    showings:0, luc:1,
-    talkTime:"0 min", texts:0, emails:12, zillow:0,
-    nextStep:"Seven weeks in a row now with no activity logged. This needs a direct conversation this week to understand what's going on." },
-  { name:"Maria Acosta", score:4,
-    calls:0, callsTarget:250, callsMet:false,
-    conversations:0, convTarget:15, convMet:false,
-    appts:0, apptTarget:2, apptMet:false,
-    showings:0, luc:1,
-    talkTime:"0 min", texts:0, emails:4, zillow:0,
-    nextStep:"No activity logged again this week despite being under contract. Let's connect to confirm tracking is set up correctly and get moving on the 250+ call minimum." },
+    showings:0, luc:7,
+    talkTime:"0 min", texts:0, emails:2, zillow:0,
+    nextStep:"No calls, conversations, or appointments logged again this week. Let's connect and put a concrete daily plan in place." },
   { name:"Christopher Pressley", score:0,
     calls:0, callsTarget:400, callsMet:false,
     conversations:0, convTarget:15, convMet:false,
@@ -405,6 +540,34 @@ const agents = [
     showings:0, luc:0,
     talkTime:"0 min", texts:0, emails:0, zillow:0,
     nextStep:"No activity logged again this week. Let's connect to understand what's going on and rebuild a consistent routine." },
+  { name:"Marc Urbainczyk", score:0,
+    calls:0, callsTarget:400, callsMet:false,
+    conversations:0, convTarget:15, convMet:false,
+    appts:0, apptTarget:2, apptMet:false,
+    showings:0, luc:0,
+    talkTime:"0 min", texts:0, emails:0, zillow:0,
+    nextStep:"No activity logged again this week. Let's connect and put a plan in place." },
+  { name:"Maria Acosta", score:0,
+    calls:0, callsTarget:250, callsMet:false,
+    conversations:0, convTarget:15, convMet:false,
+    appts:0, apptTarget:2, apptMet:false,
+    showings:0, luc:1,
+    talkTime:"0 min", texts:0, emails:0, zillow:0,
+    nextStep:"No activity logged again this week despite being under contract. Let's connect to confirm tracking is set up correctly and get moving on the 250+ call minimum." },
+  { name:"Maryka Verteramo", score:0,
+    calls:0, callsTarget:250, callsMet:false,
+    conversations:0, convTarget:15, convMet:false,
+    appts:0, apptTarget:2, apptMet:false,
+    showings:0, luc:1,
+    talkTime:"0 min", texts:0, emails:0, zillow:0,
+    nextStep:"No calls, conversations, or appointments logged this week. The priority is building a consistent daily call routine." },
+  { name:"William McClellan III", score:0,
+    calls:0, callsTarget:250, callsMet:false,
+    conversations:0, convTarget:15, convMet:false,
+    appts:0, apptTarget:2, apptMet:false,
+    showings:0, luc:2,
+    talkTime:"0 min", texts:0, emails:0, zillow:0,
+    nextStep:"Eight weeks in a row now with no activity logged. This needs a direct conversation this week to understand what's going on." },
 ];
 
 let sortKey = "score", sortDir = -1, activeFilter = "all", searchTerm = "";
@@ -533,6 +696,183 @@ document.getElementById("searchInput").addEventListener("input", (e)=>{
 });
 
 render();
+
+/* ============================================================
+   TAB SWITCHING
+   ============================================================ */
+document.querySelectorAll(".tab-btn").forEach(btn=>{
+  btn.addEventListener("click", ()=>{
+    document.querySelectorAll(".tab-btn").forEach(b=>b.classList.remove("active"));
+    document.querySelectorAll(".tab-panel").forEach(p=>p.classList.remove("active"));
+    btn.classList.add("active");
+    document.getElementById("tab-"+btn.dataset.tab).classList.add("active");
+    if(btn.dataset.tab === "race") renderRace();
+  });
+});
+
+/* ============================================================
+   RACE TO CONTRACT — for agents not currently under contract.
+   Restarts automatically each calendar month; weeks are computed
+   from the real calendar (Mon–Sun), so month boundaries that fall
+   mid-week are handled without any manual date math.
+
+   TO UPDATE WEEKLY: add this week's call count to the end of each
+   agent's `weeks` array (use null for a week not yet reported).
+   TO START A NEW MONTH: clear every agent's `weeks` array back to
+   [] — the calendar logic figures out the new month's weeks and
+   labels on its own.
+   ============================================================ */
+const RACE_ICON_POOL = ["🚀","🏎️","🛸","🦄","🐆","⚡","🎢","🛹","🏄","🚁","🦸","🌪️","🏹","🦅"];
+function raceIconFor(name){
+  let h = 0;
+  for(let i=0;i<name.length;i++){ h = (h*31 + name.charCodeAt(i)) >>> 0; }
+  return RACE_ICON_POOL[h % RACE_ICON_POOL.length];
+}
+
+let raceAgents = [
+  { name:"Ateka Hatcher",        weeks:[403,404,408], graduated:false },
+  { name:"Donald Pollas",        weeks:[412,408,460], graduated:false },
+  { name:"Janaina Tomita",       weeks:[394,411,418], graduated:false },
+  { name:"Nina Jones",           weeks:[120,410,135], graduated:false },
+  { name:"Lori Blum",            weeks:[121,151,21],  graduated:false },
+  { name:"Gwendolyn Phinizy",    weeks:[83, 408,402], graduated:false },
+  { name:"Kelly Arroyo",         weeks:[53, 143,263], graduated:false },
+  { name:"Epie Rittenberg",      weeks:[26, 13, 25],  graduated:false },
+  { name:"Jennifer Vacchetto",   weeks:[11, 12, 31],  graduated:false },
+  { name:"Christopher Pressley", weeks:[0,  0,  0],   graduated:false },
+  { name:"Marc Urbainczyk",      weeks:[0,  0,  0],   graduated:false },
+];
+let raceWeeklyTarget = 450;
+
+function getMondayOnOrBefore(date){
+  const d = new Date(date);
+  const day = d.getDay();
+  const diff = (day === 0 ? -6 : 1) - day;
+  d.setDate(d.getDate() + diff);
+  d.setHours(0,0,0,0);
+  return d;
+}
+function fmtShort(date){
+  return date.toLocaleDateString('en-US', {month:'short', day:'numeric'});
+}
+function getMonthWeeks(year, monthIndex){
+  const lastDay = new Date(year, monthIndex+1, 0);
+  let weekStart = getMondayOnOrBefore(new Date(year, monthIndex, 1));
+  const weeks = [];
+  while (weekStart <= lastDay){
+    const weekEnd = new Date(weekStart);
+    weekEnd.setDate(weekStart.getDate()+6);
+    weeks.push({ start:new Date(weekStart), end:new Date(weekEnd), label:`${fmtShort(weekStart)}–${fmtShort(weekEnd)}` });
+    weekStart = new Date(weekStart);
+    weekStart.setDate(weekStart.getDate()+7);
+  }
+  return weeks;
+}
+
+const today = new Date();
+const raceMonthWeeks = getMonthWeeks(today.getFullYear(), today.getMonth());
+const raceMonthLabel = today.toLocaleDateString('en-US', {month:'long', year:'numeric'});
+let raceCurrentWeekIdx = raceMonthWeeks.findIndex(w => today >= w.start && today <= w.end);
+if (raceCurrentWeekIdx === -1) raceCurrentWeekIdx = today < raceMonthWeeks[0].start ? 0 : raceMonthWeeks.length-1;
+let raceViewingWeek = raceCurrentWeekIdx + 1; // 1-based
+
+const raceWeekSelect = document.getElementById("raceWeekSelect");
+const raceTargetInput = document.getElementById("raceTargetInput");
+raceTargetInput.value = raceWeeklyTarget;
+raceMonthWeeks.forEach((w,i)=>{
+  const opt = document.createElement("option");
+  opt.value = i+1;
+  opt.textContent = `Wk ${i+1} · ${w.label}`;
+  if(i+1 === raceViewingWeek) opt.selected = true;
+  raceWeekSelect.appendChild(opt);
+});
+document.getElementById("raceTitle").textContent = `Race to Contract — ${raceMonthLabel.split(" ")[0]} Calls Sprint`;
+
+function raceTotal(a){ return a.weeks.slice(0, raceMonthWeeks.length).reduce((s,v)=> s + (v||0), 0); }
+function raceGoal(){ return raceWeeklyTarget * raceMonthWeeks.length; }
+function raceExpectedPace(){ return raceWeeklyTarget * raceViewingWeek; }
+function racePaceStatus(a){
+  if (a.graduated) return 'graduated';
+  const diff = raceTotal(a) - raceExpectedPace();
+  if (diff >= raceWeeklyTarget * 0.1) return 'ahead';
+  if (diff <= -raceWeeklyTarget * 0.1) return 'behind';
+  return 'ontrack';
+}
+const RACE_BADGE = { ahead:'▲ ahead', behind:'▼ behind', ontrack:'● on pace', graduated:'🏡 under contract' };
+const RACE_TAG = { ahead:'Ahead', behind:'Behind', ontrack:'On pace', graduated:'Under contract' };
+
+function renderRace(){
+  raceWeeklyTarget = Math.max(1, Number(raceTargetInput.value) || 1);
+  raceViewingWeek = Number(raceWeekSelect.value);
+  const g = raceGoal();
+
+  document.getElementById("raceWeekStrip").innerHTML = raceMonthWeeks.map(w =>
+    `<span>${w.label} · target ${raceWeeklyTarget}</span>`).join("");
+
+  const cpEl = document.getElementById("raceCheckpoints");
+  cpEl.innerHTML = raceMonthWeeks.map((w,i)=>{
+    const pct = ((i+1) / raceMonthWeeks.length) * 100;
+    const isCurrent = (i+1) === raceViewingWeek;
+    return `<div class="race-checkline${isCurrent?' current':''}" style="left:calc(${pct}% * 0.88 + 3%)">
+      <span class="rc-label">${w.label.split('–')[0]}</span></div>`;
+  }).join("");
+
+  const ranked = [...raceAgents].sort((a,b)=> raceTotal(b) - raceTotal(a));
+  const winners = raceAgents.filter(a => raceTotal(a) >= g);
+
+  const trackEl = document.getElementById("raceTrack");
+  trackEl.querySelectorAll(".race-lane").forEach(l=>l.remove());
+  raceAgents.forEach(a=>{
+    const t = raceTotal(a);
+    const pct = Math.min(100, (t/g)*100);
+    const status = racePaceStatus(a);
+    const isWinner = t >= g;
+    const lane = document.createElement("div");
+    lane.className = "race-lane";
+    let glow = "";
+    if(isWinner) glow = "race-winner-glow";
+    else if(status === "behind") glow = "race-behind-glow";
+    const badgeText = isWinner ? "🏆 executed" : RACE_BADGE[status];
+    lane.innerHTML = `
+      <div class="race-lane-label">${a.name}${a.graduated?' 🏡':''} — ${t} / ${g}</div>
+      <div class="race-finish"></div>
+      <div class="race-flag">🏁</div>
+      <div class="race-runner ${glow}" style="left:calc(${pct}% * 0.88 + 3%);">
+        <div class="race-pace-badge race-pace-${status}">${badgeText}</div>
+        ${raceIconFor(a.name)}
+      </div>`;
+    trackEl.appendChild(lane);
+  });
+
+  const bannerEl = document.getElementById("raceWinnerBanner");
+  if(winners.length > 0){
+    bannerEl.style.display = "block";
+    bannerEl.textContent = winners.length === 1
+      ? `🏁 ${winners[0].name} hit ${g} calls — race executed!`
+      : `🏁 Photo finish — ${winners.map(w=>w.name).join(", ")} all crossed ${g} calls!`;
+  } else {
+    bannerEl.style.display = "none";
+  }
+
+  const lbEl = document.getElementById("raceLeaderboardList");
+  lbEl.innerHTML = ranked.map((a,i)=>{
+    const t = raceTotal(a);
+    const pct = Math.min(100, Math.round((t/g)*100));
+    const status = racePaceStatus(a);
+    return `<li>
+      <span class="race-lb-name ${i===0?'race-rank-1':''}">
+        <span class="race-lb-icon">${raceIconFor(a.name)}</span>
+        ${i+1}. ${a.name}${a.graduated?' 🏡':''}
+        <span class="race-tag badge ${status==='behind'?'below':status==='graduated'?'met':'met'}" style="background:${status==='behind'?'var(--pink-soft)':status==='ahead'?'var(--lime-soft)':status==='graduated'?'#fff6d8':'#e6fafb'}; color:${status==='behind'?'var(--pink-deep)':status==='ahead'?'var(--lime-deep)':status==='graduated'?'var(--yellow-deep)':'var(--cyan-deep)'}">${RACE_TAG[status]}</span>
+      </span>
+      <span class="race-lb-score">${t}<span class="race-lb-pct">${pct}% to goal</span></span>
+    </li>`;
+  }).join("");
+}
+
+raceWeekSelect.addEventListener("change", renderRace);
+raceTargetInput.addEventListener("input", renderRace);
+
 </script>
 </body>
 </html>
